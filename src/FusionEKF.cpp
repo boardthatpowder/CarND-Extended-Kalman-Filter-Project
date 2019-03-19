@@ -94,11 +94,14 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       v_x = 0;
       v_y = 0;
     }
-    cout << "p_x: " << p_x << ", p_y: " << p_y << ", v_x: " << v_x ", v_y: " << v_y << endl;
+    cout << "p_x: " << p_x << endl;
+    cout << "p_y: " << p_y << endl;
+    cout << "v_x: " << v_x << endl;
+    cout << "v_y: " << v_y << endl;
     ekf_.x_ << p_x, p_y, v_x, v_y;
     
     // Create the covariance matrix.
-    efk_.P_ << 1, 0, 0, 0,
+    ekf_.P_ << 1, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1000, 0,
                 0, 0, 0, 1000;
